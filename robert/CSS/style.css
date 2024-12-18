@@ -1,6 +1,10 @@
 @import "./variable.css";
-
-html, body, *{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body,
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,18 +12,37 @@ html, body, *{
   font-family: "Comic Sans MS", "Comic Sans", sans-serif;
 }
 
+.border-maker {
+  background-color: blue;
+
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  flex-grow: 1;
+  text-align: center;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+
 h1 {
-    font-size: var(--h1);
+  font-size: var(--h1);
 }
 h2 {
-    font-size: var(--h2);
+  font-size: var(--h2);
 }
-h3,p {
-    font-size: var(--h3);
+h3,
+p {
+  font-size: var(--h3);
 }
-h4{
-    font-size: var(--h4);
+h4 {
+  font-size: var(--h4);
 }
-h1, h2, h3, h4, h5, li {
-    text-align: center;
+h1,
+h2,
+h3,
+h4,
+h5,
+li {
+  text-align: center;
 }

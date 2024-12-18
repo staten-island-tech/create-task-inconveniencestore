@@ -6,6 +6,4 @@ const DOMSelectors = {
 
 DOMSelectors.startButton.addEventListener("click", initGame);
 
-initGame() {
-    
-}
+function initGame() {}
