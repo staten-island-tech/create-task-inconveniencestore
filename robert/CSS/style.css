@@ -12,16 +12,10 @@ body,
   font-family: "Comic Sans MS", "Comic Sans", sans-serif;
 }
 
-.border-maker {
-  background-color: blue;
-
-  display: flex;
-  align-items: center;
-  flex-flow: column wrap;
-  justify-content: space-around;
+div {
   flex-grow: 1;
-  text-align: center;
   padding: 3rem;
+  margin: 3rem;
   border-radius: 1rem;
 }
 

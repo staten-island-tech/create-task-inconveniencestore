@@ -11,5 +11,12 @@
   "devDependencies": {
     "tailwindcss": "^3.4.17",
     "vite": "^6.0.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "css": "^3.0.0",
+    "daisyui": "^4.12.22",
+    "postcss": "^8.4.49",
+    "tailwind": "^4.0.0"
   }
 }
