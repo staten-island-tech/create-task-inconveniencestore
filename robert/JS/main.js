@@ -1,8 +1,8 @@
 import "../CSS/style.css";
 
 const DOMSelectors = {
-  startButton: document.querySelector("start-button"),
-  timerArea: document.querySelector("timer-area"),
+  startButton: document.querySelector(".start-button"),
+  timerArea: document.querySelector(".timer-area"),
 };
 
 //DOMSelectors.startButton.addEventListener("click", initGame);
@@ -17,7 +17,7 @@ function wait(ms) {
 }
 
 function updateCountdownDisplay() {
-  DOMSelectors.timerArea.textContent = `time remaining: ${duration}s`;
+  DOMSelectors.timerArea.innerHTML = `<h3>time remaining: ${duration}s</h3>`;
 }
 
 async function countdown() {
@@ -27,7 +27,7 @@ async function countdown() {
     duration--;
   }
 
-  DOMSelectors.timerArea.textContent = `TIMES UP`;
+  DOMSelectors.timerArea.innerHTML = `<h3>times up</h3>`;
 }
 
 countdown();
