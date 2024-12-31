@@ -3,6 +3,8 @@ import "../CSS/style.css";
 const DOMSelectors = {
   startButton: document.querySelector(".start-button"),
   timerArea: document.querySelector(".timer-area"),
+  itemDisplay: document.querySelector(".item-display"),
+  itemInfo: document.querySelector(".item-info"),
 };
 
 //DOMSelectors.startButton.addEventListener("click", initGame);
