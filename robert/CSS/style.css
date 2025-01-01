@@ -14,13 +14,16 @@ body,
 }
 
 div {
+  /* CHANGE FLEX GROW FOR THE REM THINGS TO WORK */
   flex-grow: 1;
-  padding: 3rem;
-  margin: 3rem;
+  padding: 1rem;
+  margin: 1rem;
   border-radius: 1rem;
 }
 
-
+.left-side {
+  width: 1rem;
+}
 
 h1 {
   font-size: var(--h1);

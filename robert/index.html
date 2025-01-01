@@ -28,13 +28,16 @@
 
       <div class="game-content flex flex-row flex-wrap justify-around items-center bg-[#0901FC]">
         <div class="left-side bg-[#38FC01]">
-          <div class="item-display"> 
-            <img src="https://media.discordapp.net/attachments/819276898529968189/1263307737874563163/image.png?ex=67754443&is=6773f2c3&hm=dc7979888d29aa3dc18a5a36639fc68ddb97b7183466c7e4a7c4483985a6e537&=&format=webp&quality=lossless&width=395&height=324" alt="" class="m-auto">
+
+          <!-- <div class="item-display"> 
+            <img src="${item.image}" alt="" class="m-auto">
           </div>
+
           <div class="item-info">
-            <h2>item name here</h2>
-            <p>description here</p>
-          </div>
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+          </div> -->
+
         </div>
         <div class="right-side bg-[#fceb01]">
           <div class="timer-area">
@@ -42,7 +45,7 @@
           </div>
           <div class="bid-area">
             <form action="">
-              <label for="" class="">Bid Amount: </label>
+              <label for="" class="">bid amount: </label>
               <input type="text">
             </form>
           </div>
