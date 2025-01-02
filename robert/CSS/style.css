@@ -12,6 +12,10 @@ body,
   font-family: "Comic Sans MS", "Comic Sans", sans-serif;
   color: black;
 }
+button {
+  @apply bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 block w-40 p-2;
+  margin: 1rem auto;
+}
 
 div {
   /* CHANGE FLEX GROW FOR THE REM THINGS TO WORK */
@@ -38,11 +42,16 @@ p {
 h4 {
   font-size: var(--h4);
 }
+p {
+  font-size: var(--p);
+}
 h1,
 h2,
 h3,
 h4,
 h5,
-li, p, form {
+li,
+p,
+form {
   text-align: center;
 }
