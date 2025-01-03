@@ -8,29 +8,27 @@ const normalAuctionItems = [
     minIncrease: 5,
     value: 20,
     bidEagerness: 20,
-    audienceBidRange: [5, 10], //what did this mean
     //specialBidderInclusion: "array name here in bidders",
   },
   {
     name: "one dollar",
-    description: "thats right, one freedom dollar",
+    description: "thats right, one freedom buckaroo",
     image: "",
 
     minIncrease: 0.01,
     value: 1,
     bidEagerness: 20,
-    audienceBidRange: [5, 10], //what did this mean
     //specialBidderInclusion: "array name here in bidders",
   },
   {
     name: "one canadian geese",
-    description: "thats right, one freedom dollar",
+    description:
+      "it'd be honestly pretty scary if 50 of them chased you down in an empty field",
     image: "",
 
     minIncrease: 0.01,
     value: 1,
     bidEagerness: 20,
-    audienceBidRange: [5, 10], //what did this mean
     //specialBidderInclusion: "array name here in bidders",
   },
 ];
@@ -44,7 +42,6 @@ const highEndAuctionItems = [
     minIncrease: 5,
     value: 20,
     bidEagerness: 20,
-    audienceBidRange: [5, 10], //what did this mean
     //specialBidderInclusion: "array name here in bidders",
   },
   {
@@ -55,7 +52,6 @@ const highEndAuctionItems = [
     minIncrease: 5,
     value: 20,
     bidEagerness: 20,
-    audienceBidRange: [5, 10], //what did this mean
     //specialBidderInclusion: "array name here in bidders",
   },
   {
@@ -66,7 +62,6 @@ const highEndAuctionItems = [
     minIncrease: 5,
     value: 20,
     bidEagerness: 20,
-    audienceBidRange: [5, 10], //what did this mean
     //specialBidderInclusion: "array name here in bidders",
   },
 ];

@@ -7,15 +7,25 @@ const DOMSelectors = {
   //itemDisplay: document.querySelector(".item-display"),
   //itemInfo: document.querySelector(".item-info"),
   leftSide: document.querySelector(".left-side"),
+  bidButton: document.querySelector(".bid-button"),
+  bidLog: document.querySelector(".bid-log"),
 };
 
 //DOMSelectors.startButton.addEventListener("click", initGame);
-let duration = 10;
+let duration = 30;
+let auctionRunning = false;
+let bidBelongsToPlayer = false;
 //add a variable for bid hesitance
-
+DOMSelectors.bidButton.addEventListener("click", () => {
+  console.log("click");
+  increaseBid();
+  bidBelongsToPlayer = true;
+});
 //countdown();
 initGame();
 function initGame() {
+  auctionRunning = true;
+
   //generate random number from the index to determine item, store the index
   let randomNumber = Math.floor(Math.random() * normalAuctionItems.length);
   console.log(`random number: ${randomNumber}`);
@@ -40,13 +50,29 @@ async function audienceBid(randomNumber) {
   const item = normalAuctionItems[randomNumber];
   let bidChance = Math.floor(Math.random() * 100 + 1);
   console.log(`bid chance: ${bidChance}`);
+
   if (bidChance <= item.bidEagerness) {
     console.log("bid increased");
-    //increaseBid();
+    bidBelongsToPlayer = false;
+    increaseBid();
   }
 }
 
-function increaseBid() {}
+function increaseBid() {
+  //duration += 3;
+
+  if (bidBelongsToPlayer === true) {
+    DOMSelectors.bidLog.insertAdjacentHTML(
+      "beforeend",
+      "you have increased the bid by ________!"
+    );
+  } else {
+    DOMSelectors.bidLog.insertAdjacentHTML(
+      "beforeend",
+      "_____ increased by the bid by _____!"
+    );
+  }
+}
 
 async function countdown(randomNumber) {
   while (duration > 0) {
