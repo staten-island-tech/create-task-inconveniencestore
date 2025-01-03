@@ -34,7 +34,7 @@ div {
 }
 
 .bid-log {
-  @apply bg-[#ff00ea];
+  @apply bg-[#ff00ea] text-xl;
 }
 
 h1 {

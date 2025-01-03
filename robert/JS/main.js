@@ -5,28 +5,27 @@ import { defaultBidders } from "./bidders.js";
 const DOMSelectors = {
   startButton: document.querySelector(".start-button"),
   timerArea: document.querySelector(".timer-area"),
-  //itemDisplay: document.querySelector(".item-display"),
-  //itemInfo: document.querySelector(".item-info"),
   leftSide: document.querySelector(".left-side"),
   bidButton: document.querySelector(".bid-button"),
   bidLog: document.querySelector(".bid-log"),
 };
 
-//DOMSelectors.startButton.addEventListener("click", initGame);
-let duration = 3;
-let auctionRunning = false;
-let bidBelongsToPlayer = false;
-//add a variable for bid hesitance
+let duration = 10;
+
 DOMSelectors.bidButton.addEventListener("click", () => {
   console.log("click");
-  increaseBid();
-  bidBelongsToPlayer = true;
+  increaseBid(true);
 });
-//countdown();
-initGame();
-function initGame() {
-  auctionRunning = true;
 
+function wait(ms) {
+  //when resolve is called, it counts as promise fulfilled
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+//##########################################################################
+
+newItem();
+function newItem() {
   //generate random number from the index to determine item, store the index
   let randomNumber = Math.floor(Math.random() * normalAuctionItems.length);
   console.log(`random number: ${randomNumber}`);
@@ -41,11 +40,6 @@ function initGame() {
   //side note: global variable for current amount of money?
 }
 
-function wait(ms) {
-  //when resolve is called, it counts as promise fulfilled
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 //call this in countdown every second that it's triggered?
 async function audienceBid(randomNumber) {
   const item = normalAuctionItems[randomNumber];
@@ -54,12 +48,11 @@ async function audienceBid(randomNumber) {
 
   if (bidChance <= item.bidEagerness) {
     console.log("bid increased");
-    bidBelongsToPlayer = false;
-    increaseBid();
+    increaseBid(false);
   }
 }
 
-function increaseBid() {
+function increaseBid(bidBelongsToPlayer) {
   //duration += 3;
 
   let randomNumber = Math.floor(Math.random() * defaultBidders.length);
@@ -67,12 +60,12 @@ function increaseBid() {
   if (bidBelongsToPlayer === true) {
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
-      `you have increased the bid by ________!`
+      `you have increased the bid by ________! <br>`
     );
   } else {
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
-      `${defaultBidders[randomNumber]} increased by the bid by _____!`
+      `${defaultBidders[randomNumber]} increased by the bid by _____! <br>`
     );
   }
 }
