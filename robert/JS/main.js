@@ -1,5 +1,6 @@
 import "../CSS/style.css";
 import { normalAuctionItems } from "./items_for_sale.js";
+import { defaultBidders } from "./bidders.js";
 
 const DOMSelectors = {
   startButton: document.querySelector(".start-button"),
@@ -12,7 +13,7 @@ const DOMSelectors = {
 };
 
 //DOMSelectors.startButton.addEventListener("click", initGame);
-let duration = 30;
+let duration = 3;
 let auctionRunning = false;
 let bidBelongsToPlayer = false;
 //add a variable for bid hesitance
@@ -61,15 +62,17 @@ async function audienceBid(randomNumber) {
 function increaseBid() {
   //duration += 3;
 
+  let randomNumber = Math.floor(Math.random() * defaultBidders.length);
+
   if (bidBelongsToPlayer === true) {
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
-      "you have increased the bid by ________!"
+      `you have increased the bid by ________!`
     );
   } else {
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
-      "_____ increased by the bid by _____!"
+      `${defaultBidders[randomNumber]} increased by the bid by _____!`
     );
   }
 }

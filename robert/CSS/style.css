@@ -29,6 +29,14 @@ div {
   width: 1rem;
 }
 
+.right-side {
+  width: 1rem;
+}
+
+.bid-log {
+  @apply bg-[#ff00ea];
+}
+
 h1 {
   font-size: var(--h1);
 }

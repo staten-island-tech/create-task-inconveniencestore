@@ -1,4 +1,7 @@
 const defaultBidders = [
+  //mr. whalen
+  "Mr. Whalen",
+
   //advanced class
   "Noah Abbas",
   "Batyrkhan Alimzhanov",
@@ -70,3 +73,4 @@ const defaultBidders = [
   "Jefferson Zheng",
   "Kai Zhong-Jing",
 ];
+export { defaultBidders };
