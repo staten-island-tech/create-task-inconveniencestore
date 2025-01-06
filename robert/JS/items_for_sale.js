@@ -27,8 +27,18 @@ const normalAuctionItems = [
     image: "",
 
     minIncrease: 0.01,
-    value: 1,
+    value: 530,
     bidEagerness: 20,
+    //specialBidderInclusion: "array name here in bidders",
+  },
+  {
+    name: "audrey's create task",
+    description: "it may or may not be complete",
+    image: "",
+
+    minIncrease: 0.01,
+    value: 1,
+    bidEagerness: 100,
     //specialBidderInclusion: "array name here in bidders",
   },
 ];

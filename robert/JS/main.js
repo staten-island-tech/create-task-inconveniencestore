@@ -40,6 +40,8 @@ function newItem() {
   //side note: global variable for current amount of money?
 }
 
+function updateBidDisplay() {}
+
 //call this in countdown every second that it's triggered?
 async function audienceBid(randomNumber) {
   const item = normalAuctionItems[randomNumber];
@@ -56,7 +58,8 @@ async function audienceBid(randomNumber) {
 
 function increaseBid(bidBelongsToPlayer) {
   const playerBidIncreaseAmt = DOMSelectors.bidInput.value;
-  duration += 1;
+  DOMSelectors.bidInput.value = ``;
+  //duration += 1;
   let randomNumber = Math.floor(Math.random() * defaultBidders.length);
 
   if (bidBelongsToPlayer === true) {
@@ -64,7 +67,6 @@ function increaseBid(bidBelongsToPlayer) {
       "beforeend",
       `you have increased the bid by ${playerBidIncreaseAmt}! <br>`
     );
-    DOMSelectors.currentBid.innerHTML = `<h3>$${playerBidIncreaseAmt}</h3>`;
   } else {
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
