@@ -40,47 +40,53 @@ function newItem() {
   //side note: global variable for current amount of money?
 }
 
-function updateBidDisplay() {}
-
 //call this in countdown every second that it's triggered?
 async function audienceBid(randomNumber) {
   const item = normalAuctionItems[randomNumber];
 
-  console.log(`bid eagerness adjusted, current value: ${item.bidEagerness}`);
   let bidChance = Math.floor(Math.random() * 100 + 1);
   console.log(`bid chance: ${bidChance}`);
 
   if (bidChance <= item.bidEagerness) {
     console.log("bid increased");
-    increaseBid(false);
+    increaseBid(false, currentBid);
   }
+
+  return currentBid;
 }
 
-function increaseBid(bidBelongsToPlayer) {
-  const playerBidIncreaseAmt = DOMSelectors.bidInput.value;
+function increaseBid(bidBelongsToPlayer, currentBid) {
+  const playerBidIncreaseAmt = parseInt(DOMSelectors.bidInput.value) || 0;
   DOMSelectors.bidInput.value = ``;
   //duration += 1;
   let randomNumber = Math.floor(Math.random() * defaultBidders.length);
 
   if (bidBelongsToPlayer === true) {
+    currentBid += playerBidIncreaseAmt;
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
       `you have increased the bid by ${playerBidIncreaseAmt}! <br>`
     );
   } else {
+    const bidIncrease = Math.floor(Math.random() * 100 + 1);
+    n;
+    currentBid += bidIncrease;
+
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
       `${defaultBidders[randomNumber]} increased by the bid by $____! <br>`
     );
   }
+  updateBidDisplay(currentBid);
+  return currentBid;
 }
 
 async function countdown(randomNumber) {
   while (duration > 0) {
     updateCountdownDisplay();
-    audienceBid(randomNumber);
+    audienceBid(randomNumber, currentBid);
     await wait(500);
-    audienceBid(randomNumber);
+    audienceBid(randomNumber, currentBid);
     await wait(500);
     duration--;
   }
@@ -117,4 +123,8 @@ function updateItemDisplay(index) {
   } else {
     DOMSelectors.leftSide.innerHTML = `<p>no item found.</p>`;
   }
+}
+
+function updateBidDisplay(currentBid) {
+  DOMSelectors.currentBid.innerHTML = `<h3>$${currentBid}</h3>`;
 }
