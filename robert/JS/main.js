@@ -66,16 +66,20 @@ function increaseBid(bidBelongsToPlayer) {
   let randomNumber = Math.floor(Math.random() * defaultBidders.length);
 
   if (bidBelongsToPlayer === true) {
+    currentBid += playerBidIncreaseAmt;
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
       `you have increased the bid by ${playerBidIncreaseAmt}! <br>`
     );
   } else {
+    currentBid += randomNumber;
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
       `${defaultBidders[randomNumber]} increased by the bid by $____! <br>`
     );
   }
+
+  updateBidDisplay(currentBid);
 }
 
 async function countdown(randomNumber) {
