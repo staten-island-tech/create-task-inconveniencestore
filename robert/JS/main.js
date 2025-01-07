@@ -8,7 +8,7 @@ const DOMSelectors = {
   leftSide: document.querySelector(".left-side"),
   bidButton: document.querySelector(".bid-button"),
   bidLog: document.querySelector(".bid-log"),
-  currentBid: document.querySelector(".current-bid"),
+  currentBidDisplay: document.querySelector(".current-bid-display"),
   bidInput: document.querySelector(".bid-input"),
 };
 
