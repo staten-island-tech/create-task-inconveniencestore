@@ -8,7 +8,7 @@ const DOMSelectors = {
   leftSide: document.querySelector(".left-side"),
   bidButton: document.querySelector(".bid-button"),
   bidLog: document.querySelector(".bid-log"),
-  currentBid: document.querySelector(".current-bid"),
+  currentBidDisplay: document.querySelector(".current-bid-display"),
   bidInput: document.querySelector(".bid-input"),
 };
 
@@ -41,7 +41,7 @@ function newItem() {
 }
 
 //call this in countdown every second that it's triggered?
-async function audienceBid(randomNumber) {
+async function audienceBid(randomNumber, currentBid) {
   const item = normalAuctionItems[randomNumber];
 
   let bidChance = Math.floor(Math.random() * 100 + 1);
@@ -69,7 +69,7 @@ function increaseBid(bidBelongsToPlayer, currentBid) {
     );
   } else {
     const bidIncrease = Math.floor(Math.random() * 100 + 1);
-    n;
+
     currentBid += bidIncrease;
 
     DOMSelectors.bidLog.insertAdjacentHTML(
@@ -81,7 +81,7 @@ function increaseBid(bidBelongsToPlayer, currentBid) {
   return currentBid;
 }
 
-async function countdown(randomNumber) {
+async function countdown(randomNumber, currentBid) {
   while (duration > 0) {
     updateCountdownDisplay();
     audienceBid(randomNumber, currentBid);
@@ -126,5 +126,5 @@ function updateItemDisplay(index) {
 }
 
 function updateBidDisplay(currentBid) {
-  DOMSelectors.currentBid.innerHTML = `<h3>$${currentBid}</h3>`;
+  DOMSelectors.currentBidDisplay.innerHTML = `<h3>$${currentBid}</h3>`;
 }
