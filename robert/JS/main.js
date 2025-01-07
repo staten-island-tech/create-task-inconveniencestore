@@ -13,6 +13,7 @@ const DOMSelectors = {
 };
 
 let duration = 10;
+let currentBid = 0;
 
 DOMSelectors.bidButton.addEventListener("click", () => {
   console.log("click");
@@ -40,7 +41,9 @@ function newItem() {
   //side note: global variable for current amount of money?
 }
 
-function updateBidDisplay() {}
+function updateBidDisplay(currentBid) {
+  DOMSelectors.currentBidDisplay.innerHTML = `<h3>$${currentBid}</h3>`;
+}
 
 //call this in countdown every second that it's triggered?
 async function audienceBid(randomNumber) {
