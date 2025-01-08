@@ -14,6 +14,7 @@ const DOMSelectors = {
 
 let duration = 10;
 let currentBid = 0;
+let playerWallet = 100;
 
 DOMSelectors.bidButton.addEventListener("click", () => {
   console.log("click");
@@ -41,10 +42,6 @@ function newItem() {
   //side note: global variable for current amount of money?
 }
 
-function updateBidDisplay(currentBid) {
-  DOMSelectors.currentBidDisplay.innerHTML = `<h3>$${currentBid}</h3>`;
-}
-
 //call this in countdown every second that it's triggered?
 async function audienceBid(randomNumber) {
   const item = normalAuctionItems[randomNumber];
@@ -60,26 +57,31 @@ async function audienceBid(randomNumber) {
 }
 
 function increaseBid(bidBelongsToPlayer) {
-  const playerBidIncreaseAmt = DOMSelectors.bidInput.value;
-  DOMSelectors.bidInput.value = ``;
-  //duration += 1;
-  let randomNumber = Math.floor(Math.random() * defaultBidders.length);
+  const playerBidIncreaseAmt = parseFloat(DOMSelectors.bidInput.value);
 
-  if (bidBelongsToPlayer === true) {
-    currentBid += playerBidIncreaseAmt;
-    DOMSelectors.bidLog.insertAdjacentHTML(
-      "beforeend",
-      `you have increased the bid by ${playerBidIncreaseAmt}! <br>`
-    );
+  if (playerBidIncreaseAmt != 0) {
+    //duration += 1;
+    let randomNumber = Math.floor(Math.random() * defaultBidders.length);
+
+    if (bidBelongsToPlayer === true) {
+      currentBid += playerBidIncreaseAmt;
+      DOMSelectors.bidInput.value = ``;
+      DOMSelectors.bidLog.insertAdjacentHTML(
+        "beforeend",
+        `you have increased the bid by ${playerBidIncreaseAmt}! <br>`
+      );
+    } else {
+      currentBid += randomNumber;
+      DOMSelectors.bidLog.insertAdjacentHTML(
+        "beforeend",
+        `${defaultBidders[randomNumber]} increased by the bid by $${randomNumber}! <br>`
+      );
+    }
+
+    updateBidDisplay(currentBid);
   } else {
-    currentBid += randomNumber;
-    DOMSelectors.bidLog.insertAdjacentHTML(
-      "beforeend",
-      `${defaultBidders[randomNumber]} increased by the bid by $____! <br>`
-    );
+    return 0;
   }
-
-  updateBidDisplay(currentBid);
 }
 
 async function countdown(randomNumber) {
@@ -101,7 +103,13 @@ async function countdown(randomNumber) {
 function reset() {
   duration = 10;
   DOMSelectors.bidLog.innerHTML = ``;
+  currentBid = 0;
+  updateBidDisplay(currentBid);
   newItem();
+}
+
+function updateBidDisplay(currentBid) {
+  DOMSelectors.currentBidDisplay.innerHTML = `<h3>$${currentBid}</h3>`;
 }
 
 function updateCountdownDisplay() {
