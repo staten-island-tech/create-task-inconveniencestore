@@ -21,6 +21,7 @@ DOMSelectors.bidButton.addEventListener("click", () => {
   increaseBid(true);
 });
 
+playerWallet.addEventListener("change");
 function wait(ms) {
   //when resolve is called, it counts as promise fulfilled
   return new Promise((resolve) => setTimeout(resolve, ms));
