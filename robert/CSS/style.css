@@ -16,7 +16,9 @@ button {
   @apply bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 block w-40 p-2;
   margin: 1rem auto;
 }
-
+input {
+  @apply text-red-500;
+}
 div {
   /* CHANGE FLEX GROW FOR THE REM THINGS TO WORK */
   flex-grow: 1;
