@@ -52,6 +52,8 @@ async function audienceBid(randomNumber) {
 
   if (bidChance <= item.bidEagerness) {
     console.log("bid increased");
+    item.bidEagerness -= 1;
+    console.log(`item.bidEagerness: ${item.bidEagerness}`);
     increaseBid(false);
   }
 }
@@ -77,7 +79,7 @@ function increaseBid(bidBelongsToPlayer) {
     currentBid += randomNumber;
     DOMSelectors.bidLog.insertAdjacentHTML(
       "beforeend",
-      `</h4>${defaultBidders[randomNumber]} increased by the bid by $${randomNumber}!</h4> <br>`
+      `<h4>${defaultBidders[randomNumber]} increased by the bid by $${randomNumber}!</h4> <br>`
     );
   }
 
@@ -97,17 +99,16 @@ async function countdown(randomNumber) {
   DOMSelectors.timerArea.innerHTML = `<h3>times up</h3>`;
   await wait(1000);
 
-  let latestBidLog = DOMSelectors.bidLog.querySelector("h4:last-of-type");
-  console.log(`latest bid log: ${latestBidLog}`);
-  if (latestBidLog && latestBidLog.classList.contains("belongs-to-player")) {
-    playerWallet -= currentBid;
-  }
-
   updateWalletDisplay();
   reset();
 }
 
 function reset() {
+  let latestBidLog = DOMSelectors.bidLog.querySelector("h4:last-of-type");
+  console.log(`latest bid log: ${latestBidLog}`);
+  if (latestBidLog && latestBidLog.classList.contains("belongs-to-player")) {
+    playerWallet -= currentBid;
+  }
   duration = 10;
   DOMSelectors.bidLog.innerHTML = ``;
   currentBid = 0;
