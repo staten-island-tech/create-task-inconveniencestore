@@ -7,7 +7,7 @@ const normalAuctionItems = [
 
     minIncrease: 5,
     value: 20,
-    bidEagerness: 50,
+    bidEagerness: 20,
     //specialBidderInclusion: "array name here in bidders",
   },
   {
