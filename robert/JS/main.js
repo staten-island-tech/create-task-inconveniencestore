@@ -11,11 +11,13 @@ const DOMSelectors = {
   currentBidDisplay: document.querySelector(".current-bid-display"),
   bidInput: document.querySelector(".bid-input"),
   walletDisplay: document.querySelector(".wallet-balance"),
+  playerInventory: document.querySelector(".player-inventory"),
 };
 
 let duration = 10;
 let currentBid = 0;
 let playerWallet = 100;
+let playerInventory = [];
 
 DOMSelectors.bidButton.addEventListener("click", () => {
   console.log("click");
@@ -97,23 +99,45 @@ async function countdown(randomNumber) {
   }
 
   DOMSelectors.timerArea.innerHTML = `<h3>times up</h3>`;
-  await wait(1000);
+  await wait(2000);
 
+  //update player wallet
   updateWalletDisplay();
-  reset();
-}
 
-function reset() {
+  //determine if the player owns the item
   let latestBidLog = DOMSelectors.bidLog.querySelector("h4:last-of-type");
   console.log(`latest bid log: ${latestBidLog}`);
   if (latestBidLog && latestBidLog.classList.contains("belongs-to-player")) {
     playerWallet -= currentBid;
+    pushItemToInventory(randomNumber);
   }
+
+  //reset rest of everything for another round
   duration = 10;
   DOMSelectors.bidLog.innerHTML = ``;
   currentBid = 0;
   updateBidDisplay(currentBid);
   newItem();
+}
+
+function pushItemToInventory(randomNumber) {
+  const item = normalAuctionItems[randomNumber];
+
+  if (item) {
+    // Add the item to the inventory array
+    playerInventory.push(item);
+
+    DOMSelectors.playerInventory.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="inventory-item">
+        <img src="${item.image}" alt="${item.name}" class="inventory-image">
+        <h4>${item.name}</h4>
+        <p>${item.description}</p>
+      </div>
+      `
+    );
+  }
 }
 
 function updateBidDisplay(currentBid) {
