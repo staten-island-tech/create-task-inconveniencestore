@@ -10,11 +10,14 @@ const DOMSelectors = {
   bidLog: document.querySelector(".bid-log"),
   currentBidDisplay: document.querySelector(".current-bid-display"),
   bidInput: document.querySelector(".bid-input"),
+  walletDisplay: document.querySelector(".wallet-balance"),
+  playerInventory: document.querySelector(".player-inventory"),
 };
 
 let duration = 10;
 let currentBid = 0;
 let playerWallet = 100;
+let playerInventory = [];
 
 DOMSelectors.bidButton.addEventListener("click", () => {
   console.log("click");
@@ -46,12 +49,13 @@ function newItem() {
 async function audienceBid(randomNumber) {
   const item = normalAuctionItems[randomNumber];
 
-  console.log(`bid eagerness adjusted, current value: ${item.bidEagerness}`);
   let bidChance = Math.floor(Math.random() * 100 + 1);
   console.log(`bid chance: ${bidChance}`);
 
   if (bidChance <= item.bidEagerness) {
     console.log("bid increased");
+    item.bidEagerness -= 1;
+    console.log(`item.bidEagerness: ${item.bidEagerness}`);
     increaseBid(false);
   }
 }
@@ -59,29 +63,29 @@ async function audienceBid(randomNumber) {
 function increaseBid(bidBelongsToPlayer) {
   const playerBidIncreaseAmt = parseFloat(DOMSelectors.bidInput.value);
 
-  if (playerBidIncreaseAmt != 0) {
-    //duration += 1;
-    let randomNumber = Math.floor(Math.random() * defaultBidders.length);
+  //duration += 1;
+  let randomNumber = Math.floor(Math.random() * defaultBidders.length);
 
-    if (bidBelongsToPlayer === true) {
-      currentBid += playerBidIncreaseAmt;
-      DOMSelectors.bidInput.value = ``;
-      DOMSelectors.bidLog.insertAdjacentHTML(
-        "beforeend",
-        `you have increased the bid by ${playerBidIncreaseAmt}! <br>`
-      );
-    } else {
-      currentBid += randomNumber;
-      DOMSelectors.bidLog.insertAdjacentHTML(
-        "beforeend",
-        `${defaultBidders[randomNumber]} increased by the bid by $${randomNumber}! <br>`
-      );
-    }
-
-    updateBidDisplay(currentBid);
+  if (
+    bidBelongsToPlayer === true &&
+    playerBidIncreaseAmt != 0 &&
+    isNaN(playerBidIncreaseAmt) === false
+  ) {
+    currentBid += playerBidIncreaseAmt;
+    DOMSelectors.bidInput.value = ``;
+    DOMSelectors.bidLog.insertAdjacentHTML(
+      "beforeend",
+      `<h4 class="belongs-to-player">you have increased the bid by ${playerBidIncreaseAmt}!</h4> <br>`
+    );
   } else {
-    return 0;
+    currentBid += randomNumber;
+    DOMSelectors.bidLog.insertAdjacentHTML(
+      "beforeend",
+      `<h4>${defaultBidders[randomNumber]} increased by the bid by $${randomNumber}!</h4> <br>`
+    );
   }
+
+  updateBidDisplay(currentBid);
 }
 
 async function countdown(randomNumber) {
@@ -95,12 +99,20 @@ async function countdown(randomNumber) {
   }
 
   DOMSelectors.timerArea.innerHTML = `<h3>times up</h3>`;
+  await wait(2000);
 
-  await wait(1000);
-  reset();
-}
+  //update player wallet
+  updateWalletDisplay();
 
-function reset() {
+  //determine if the player owns the item
+  let latestBidLog = DOMSelectors.bidLog.querySelector("h4:last-of-type");
+  console.log(`latest bid log: ${latestBidLog}`);
+  if (latestBidLog && latestBidLog.classList.contains("belongs-to-player")) {
+    playerWallet -= currentBid;
+    pushItemToInventory(randomNumber);
+  }
+
+  //reset rest of everything for another round
   duration = 10;
   DOMSelectors.bidLog.innerHTML = ``;
   currentBid = 0;
@@ -108,8 +120,32 @@ function reset() {
   newItem();
 }
 
+function pushItemToInventory(randomNumber) {
+  const item = normalAuctionItems[randomNumber];
+
+  if (item) {
+    // Add the item to the inventory array
+    playerInventory.push(item);
+
+    DOMSelectors.playerInventory.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="inventory-item">
+        <img src="${item.image}" alt="${item.name}" class="inventory-image">
+        <h4>${item.name}</h4>
+        <p>${item.description}</p>
+      </div>
+      `
+    );
+  }
+}
+
 function updateBidDisplay(currentBid) {
   DOMSelectors.currentBidDisplay.innerHTML = `<h3>$${currentBid}</h3>`;
+}
+
+function updateWalletDisplay() {
+  DOMSelectors.walletDisplay.textContent = `$${playerWallet.toFixed(2)}`;
 }
 
 function updateCountdownDisplay() {
