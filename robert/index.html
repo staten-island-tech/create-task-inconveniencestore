@@ -22,31 +22,40 @@
     <li>in the end, the player gets to see the actual value, that is added to a profit counter somewhere on the page</li>
   </ul>
     </div> -->
-      <div class="header flex flex-column flex-wrap justify-around items-center bg-[#0901FC]">
+      <div class="header flex flex-col flex-wrap justify-around items-center">
         <h1>GAMBLING BUT SOCIALLY ACCEPTABLE</h1>
       </div>
 
-      <div class="game-content flex flex-row flex-wrap justify-around items-center bg-[#0901FC]">
-
-        <div class="current-bid-display">
-          <h3>currentPrice</h3>
-        </div>
-        <div class="left-side bg-[#38FC01]">
-
-          
-          <!-- <div class="item-display"> 
-            <img src="${item.image}" alt="" class="m-auto">
-          </div>
-
-          <div class="item-info">
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-          </div> -->
-
-        </div>
-        <div class="right-side bg-[#fceb01]">
+      <div class="game-content-two flex flex-row flex-wrap justify-around items-center">
+        <div class="section-1 flex flex-col flex-wrap justify-around items-center">
           <div class="timer-area">
             <h3>timer here</h3>
+          </div>
+          <div class="left-side bg-[#38FC01] w-96">
+
+          
+            <!-- <div class="item-display"> 
+              <img src="${item.image}" alt="" class="m-auto">
+            </div>
+  
+            <div class="item-info">
+              <h3>${item.name}</h3>
+              <p>${item.description}</p>
+            </div> -->
+  
+          </div>
+        </div>
+
+
+        <div class="section-2 flex flex-col flex-wrap justify-around items-center">
+          <div class="bid-log max-h-56 overflow-y-auto"></div>
+        </div>
+
+
+
+        <div class="section-3 flex flex-col flex-wrap justify-around items-center">
+          <div class="current-bid-display">
+            <h3>currentPrice</h3>
           </div>
           <div class="bid-area">
             <form action="">
@@ -55,16 +64,18 @@
             </form>
             <button type="submit" class="bid-button">BID</button>
           </div>
+          <div class="wallet-area">
+            <h3>Wallet Balance: <span class="wallet-balance">$100</span></h3>
+          </div>
+          <div class="player-inventory flex flex-row flex-wrap justify-around items-center bg-[#0901FC]"></div>
         </div>
-      </div>
-      <div class="third-section flex flex-row flex-wrap justify-around items-center bg-[#0901FC]">
-        <div class="bid-log"></div>
-        <div class="wallet-area">
-          <h3>Wallet Balance: <span class="wallet-balance">$100</span></h3>
-        </div>
+
+
       </div>
 
-      <div class="player-inventory flex flex-row flex-wrap justify-around items-center bg-[#0901FC]"></div>
+    
+
+      
     <script type="module" src="JS/main.js"></script>
   </body>
 </html>

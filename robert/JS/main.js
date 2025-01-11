@@ -74,13 +74,13 @@ function increaseBid(bidBelongsToPlayer) {
     currentBid += playerBidIncreaseAmt;
     DOMSelectors.bidInput.value = ``;
     DOMSelectors.bidLog.insertAdjacentHTML(
-      "beforeend",
+      "afterbegin",
       `<h4 class="belongs-to-player">you have increased the bid by ${playerBidIncreaseAmt}!</h4> <br>`
     );
   } else {
     currentBid += randomNumber;
     DOMSelectors.bidLog.insertAdjacentHTML(
-      "beforeend",
+      "afterbegin",
       `<h4>${defaultBidders[randomNumber]} increased by the bid by $${randomNumber}!</h4> <br>`
     );
   }
@@ -105,13 +105,14 @@ async function countdown(randomNumber) {
   updateWalletDisplay();
 
   //determine if the player owns the item
-  let latestBidLog = DOMSelectors.bidLog.querySelector("h4:last-of-type");
+  let latestBidLog = DOMSelectors.bidLog.querySelector("h4:first-of-type");
   console.log(`latest bid log: ${latestBidLog}`);
   if (latestBidLog && latestBidLog.classList.contains("belongs-to-player")) {
     playerWallet -= currentBid;
     pushItemToInventory(randomNumber);
   }
 
+  updateWalletDisplay();
   //reset rest of everything for another round
   duration = 10;
   DOMSelectors.bidLog.innerHTML = ``;
@@ -156,14 +157,12 @@ function updateItemDisplay(index) {
   const item = normalAuctionItems[index];
   if (item) {
     DOMSelectors.leftSide.innerHTML = `
-      <div class="item-display"> 
             <img src="${item.image}" alt="" class="m-auto">
           </div>
           
           <div class="item-info">
             <h3>${item.name}</h3>
             <p>${item.description}</p>
-          </div>
     `;
   } else {
     DOMSelectors.leftSide.innerHTML = `<p>no item found.</p>`;
