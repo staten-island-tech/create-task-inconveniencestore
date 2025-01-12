@@ -17,6 +17,7 @@ button {
   @apply bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 block w-40 p-2;
   margin: 1rem auto;
 }
+
 input {
   @apply text-red-500;
 }
@@ -24,11 +25,21 @@ input {
 div {
   padding: 1rem;
   margin: 1rem;
-  border-radius: 1rem;
+}
+
+.section-1, .section-2, .section-3 {
+  width: 55rem;
 }
 
 .bid-log {
   @apply bg-[#ff00ea] text-xl;
+}
+
+img {
+  max-width: 150px; 
+  max-height: 150px;
+  width: auto; 
+  height: auto;
 }
 
 h1 {

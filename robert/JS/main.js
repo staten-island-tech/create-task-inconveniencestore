@@ -32,25 +32,23 @@ function wait(ms) {
 newItem();
 function newItem() {
   //determine the item
-  let randomNumber = Math.floor(Math.random() * normalAuctionItems.length);
-  console.log(`random number: ${randomNumber}`);
+  let index = Math.floor(Math.random() * normalAuctionItems.length);
 
   //update visual of the auction. it is that only
-  updateItemDisplay(randomNumber);
+  updateItemDisplay(index);
 
   //start the game process:
   //start the timer,
-  countdown(randomNumber);
+  countdown(index);
   // make an async function for the audience, update current price bid display
   //side note: global variable for current amount of money?
 }
 
 //call this in countdown every second that it's triggered?
-async function audienceBid(randomNumber) {
-  const item = normalAuctionItems[randomNumber];
+async function audienceBid(index) {
+  const item = normalAuctionItems[index];
 
   let bidChance = Math.floor(Math.random() * 100 + 1);
-  console.log(`bid chance: ${bidChance}`);
 
   if (bidChance <= item.bidEagerness) {
     console.log("bid increased");
@@ -88,12 +86,12 @@ function increaseBid(bidBelongsToPlayer) {
   updateBidDisplay(currentBid);
 }
 
-async function countdown(randomNumber) {
+async function countdown(index) {
   while (duration > 0) {
     updateCountdownDisplay();
-    audienceBid(randomNumber);
+    audienceBid(index);
     await wait(500);
-    audienceBid(randomNumber);
+    audienceBid(index);
     await wait(500);
     duration--;
   }
@@ -109,7 +107,7 @@ async function countdown(randomNumber) {
   console.log(`latest bid log: ${latestBidLog}`);
   if (latestBidLog && latestBidLog.classList.contains("belongs-to-player")) {
     playerWallet -= currentBid;
-    pushItemToInventory(randomNumber);
+    pushItemToInventory(index);
   }
 
   updateWalletDisplay();
@@ -121,8 +119,8 @@ async function countdown(randomNumber) {
   newItem();
 }
 
-function pushItemToInventory(randomNumber) {
-  const item = normalAuctionItems[randomNumber];
+function pushItemToInventory(index) {
+  const item = normalAuctionItems[index];
 
   if (item) {
     // Add the item to the inventory array

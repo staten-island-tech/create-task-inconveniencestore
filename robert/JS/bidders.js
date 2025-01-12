@@ -1,11 +1,7 @@
 const defaultBidders = [
-  //mr. whalen
-  "Mr. Whalen",
-
-  //advanced class
+  "Whalen",
   "Noah",
   "Batyrkhan",
-  "Alexander",
   "Kevin",
   "Ryan",
   "Timothy",
@@ -34,11 +30,9 @@ const defaultBidders = [
   "Maximilian",
   "Nicole",
   "Yi",
-  "Katherinex",
+  "Katherine",
   "Yifan",
   "Yizhak",
-
-  //pd 6 ap comp sci
   "Matthew",
   "Thoman",
   "Celine",
