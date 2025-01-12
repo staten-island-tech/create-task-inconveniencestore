@@ -14,7 +14,7 @@ const normalAuctionItems = [
     description: "thats right, one freedom buckaroo",
     image: "",
 
-    multiplier: 0.01,
+    multiplier: 1,
     value: 1,
     bidEagerness: 20,
   },
@@ -24,7 +24,7 @@ const normalAuctionItems = [
       "it'd be honestly pretty scary if 50 of them chased you down in an empty field",
     image: "",
 
-    multiplier: 0.01,
+    multiplier: 10,
     value: 530,
     bidEagerness: 20,
   },
