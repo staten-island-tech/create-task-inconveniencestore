@@ -55,6 +55,52 @@ const normalAuctionItems = [
     value: 20,
     bidEagerness: 20,
   },
+  {
+    name: "dopamine",
+    description: "about 5 miligrams of it. the pure extract",
+    image: "",
+
+    multiplier: 5,
+    value: 20,
+    bidEagerness: 20,
+  },
+  {
+    name: "twitter",
+    description: "yeah like the media platform",
+    image: "",
+
+    multiplier: 5,
+    value: 20,
+    bidEagerness: 20,
+  },
+  {
+    name: "498 small plastic babies",
+    description:
+      "2 of them come prehidden in your house. if you win this bid, of course",
+    image: "",
+
+    multiplier: 5,
+    value: 20,
+    bidEagerness: 20,
+  },
+  {
+    name: "inclusion in my will",
+    description: "my fortune is roughly the same value as 50 canadian geese",
+    image: "",
+
+    multiplier: 5,
+    value: 20,
+    bidEagerness: 20,
+  },
+  {
+    name: "ceiling fan",
+    description: "a normal cieling fan",
+    image: "",
+
+    multiplier: 5,
+    value: 20,
+    bidEagerness: 20,
+  },
 ];
 
 export { normalAuctionItems };
