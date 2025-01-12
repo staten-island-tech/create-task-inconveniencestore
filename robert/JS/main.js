@@ -66,6 +66,18 @@ async function audienceBid() {
 
 function increaseBid(bidBelongsToPlayer) {
   const playerBidIncreaseAmt = parseFloat(DOMSelectors.bidInput.value);
+
+  if (bidBelongsToPlayer === true) {
+    if (
+      !DOMSelectors.bidInput.value ||
+      isNaN(playerBidIncreaseAmt) ||
+      playerBidIncreaseAmt <= 0
+    ) {
+      alert("that isnt a valid value");
+      return;
+    }
+  }
+
   const item = normalAuctionItems[index];
 
   if (duration <= 3) {
