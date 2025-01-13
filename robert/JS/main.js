@@ -12,6 +12,7 @@ const DOMSelectors = {
   bidInput: document.querySelector(".bid-input"),
   walletDisplay: document.querySelector(".wallet-balance"),
   playerInventory: document.querySelector(".player-inventory"),
+  gameContent: document.querySelector(".game-content-two"),
 };
 
 let duration = 10;
@@ -37,12 +38,26 @@ function wait(ms) {
 
 newItem();
 function newItem() {
+  if (normalAuctionItems.length === 0) {
+    endSequence();
+  }
   updateWalletDisplay();
   generateNewNumber();
   updateItemDisplay();
   DOMSelectors.bidButton.style.display = "inline-block";
 
   countdown();
+}
+
+function endSequence() {
+  DOMSelectors.gameContent.innerHTML = `<div class="end">
+  <u><h1>-end of auction-</h1></u>
+  <div class="flex flex-row flex-wrap justify-around items-center">
+    <div class="bg-[#e7e0e6] ">
+      <b><h2>final balance: ${playerWallet}</h2></b>
+    </div>
+  </div>
+</div>`;
 }
 
 //call this in countdown every second that it's triggered?
@@ -163,6 +178,11 @@ function pushItemToInventory() {
         <h3>${item.description}</h3>
         <p>you paid $${item.soldPrice.toFixed(2)}</p>
         <p>and it was worth $${item.value.toFixed(2)}</p>
+        <p>which means you earned ${(
+          100 -
+          (item.soldPrice / item.value) * 100
+        ).toFixed(2)}% of the original price</p>
+        ${item.soldPrice > item.value ? "<p> (that's not good)</p>" : ""}
       </div>
       `
     );

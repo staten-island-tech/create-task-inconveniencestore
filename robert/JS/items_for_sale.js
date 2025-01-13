@@ -2,7 +2,7 @@ const normalAuctionItems = [
   {
     name: "a bunch of bananas",
     description:
-      "it could be the one that's taped on the wall for 10 million dollars or the walmart banana for like a dollar",
+      "the one that's taped on the wall for 6 million or the walmart banana for a dollar",
 
     multiplier: 5,
     value: 10.99,
@@ -98,6 +98,22 @@ const normalAuctionItems = [
     multiplier: 20,
     value: 1000,
     bidEagerness: 50,
+  },
+  {
+    name: "camera",
+    description: "cony-a6000 (not actually cony, but i dont want to get sued)",
+
+    multiplier: 20,
+    value: 300,
+    bidEagerness: 50,
+  },
+  {
+    name: "unopened collectibles",
+    description: "it's just a brown box i have no idea what's inside",
+
+    multiplier: 20,
+    value: 3000000000000,
+    bidEagerness: 40,
   },
 ];
 

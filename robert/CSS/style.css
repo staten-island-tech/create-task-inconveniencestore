@@ -30,11 +30,7 @@ u, .belongs-to-player {
 
 .inventory-item {
   @apply bg-[#e7e0e6];
-  display: flex;
-  justify-content: center;
-  align-items: center; 
   width: 50rem;
-  height: 20rem;
 }
 
 input {
