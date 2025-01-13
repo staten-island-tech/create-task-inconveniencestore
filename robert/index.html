@@ -4,77 +4,66 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gambling but socially acceptable</title>
+    <title>the grey auction</title>
   </head>
   <body class=""> <!-- //bg-[#fc0101]-->
-    <!-- <div class="im-going-to-jump-in-place">
-      <h1>ok here's the bullet pointed to do list for idiots who cant focus (me)</h1>
-  <ul>
-    <li>figure out how to initiate the game</li>
-    <li>decide if i want a start button, timer feature</li>
-    <li>for timer, manually count 1 and remove until there is no mroe itme</li>
-    <li>make a mini algorithm for fake enemies, include variables for eagerness to bet, random scale for relative value of item and how much other people are willing to increment</li>
-    <li>figure out where to source the items</li>
-    <li>working money system: do not let the player go into debt</li>
-    <li>make the bidding system, which probably incorporates everything above in an iteration loop.</li>
-    <li>for each second, percent chance is gamble'd for someone who wants it</li>
-
-    <li>in the end, the player gets to see the actual value, that is added to a profit counter somewhere on the page</li>
-  </ul>
-    </div> -->
+    
       <div class="header flex flex-col flex-wrap justify-around items-center">
-        <h1>GAMBLING BUT SOCIALLY ACCEPTABLE</h1>
+        <u><h1>auctioning, but i found (most of) these items at a walmart</h1></u>
       </div>
 
       <div class="game-content-two flex flex-row flex-wrap justify-around items-center">
-        <div class="section-1 bg-[#ff08ca] h-96 flex flex-col justify-around items-center">
-          <div class="timer-area">
-            <h3>timer here</h3>
-          </div>
-          <div class="left-side bg-[#38FC01] w-96">
+        <div class="section-1 bg-[#e7e0e6] flex flex-col justify-around items-center">
+          
+          <u><h2>CURRENT ITEM:</h2></u>
+          
+          <div class="left-side">
 
         
             <!-- <div class="item-display"> 
-              <img src="${item.image}" alt="" class="m-auto">
-            </div>
-  
             <div class="item-info">
               <h3>${item.name}</h3>
               <p>${item.description}</p>
             </div> -->
   
           </div>
+          <div class="timer-area">
+            <h3>timer here</h3>
+          </div>
         </div>
 
 
-        <div class="section-2 bg-[#ff08ca] h-96 flex flex-col flex-wrap justify-around items-center">
-          <div class="bid-log overflow-y-auto max-h-52"></div>
+        <div class="section-2 bg-[#e7e0e6] flex flex-col flex-wrap justify-around items-center">
+          <u><h2>bid log:</h2></u>
+          <div class="bid-log overflow-y-auto bg-[#cfc3cd]"></div>
         </div>
 
 
 
-        <div class="section-3 bg-[#ff08ca] h-96 flex flex-col justify-around items-center">
+        <div class="section-3 bg-[#e7e0e6] flex flex-col justify-around items-center">
+          <u><h2>current bid price:</h2></u>
           <div class="current-bid-display">
             <h3></h3>
           </div>
           <div class="bid-area">
             <form action="">
-              <label for="" class="">bid amount: </label>
+              <div><label for="" class="">bid amount: </label></div>
               <input type="text" class="bid-input">
             </form>
-            <button type="submit" class="bid-button">BID</button>
+            
+          </div> 
+          <div><button type="submit" class="bid-button">BID</button></div>
+          <div class="wallet-balance">
           </div>
-          <div class="wallet-area">
-            <h3>Wallet Balance: <span class="wallet-balance">$100</span></h3>
-          </div>
-          <div class="player-inventory flex flex-row flex-wrap justify-around items-center bg-[#0901FC]"></div>
+          
         </div>
 
-
       </div>
-
-    
-
+      <u><h1>your inventory: </h1></u>
+      <div class="player-inventory flex flex-row justify-around flex-wrap items-center">
+        
+        
+      </div>
       
     <script type="module" src="JS/main.js"></script>
   </body>
