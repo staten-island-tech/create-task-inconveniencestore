@@ -22,7 +22,7 @@ let playerOwned = [];
 
 let index = 0;
 
-function generateNewNumber() {
+function generateNewIndex() {
   index = Math.floor(Math.random() * normalAuctionItems.length);
 }
 
@@ -42,11 +42,11 @@ function newItem() {
     endSequence();
   }
   updateWalletDisplay();
-  generateNewNumber();
+  generateNewIndex();
   updateItemDisplay();
   DOMSelectors.bidButton.style.display = "inline-block";
 
-  countdown();
+  countdownAndReset();
 }
 
 function endSequence() {
@@ -61,7 +61,6 @@ function endSequence() {
 </div>`;
 }
 
-//call this in countdown every second that it's triggered?
 async function audienceBid() {
   const item = normalAuctionItems[index];
 
@@ -127,7 +126,7 @@ function increaseBid(bidBelongsToPlayer) {
   updateBidDisplay(currentBid);
 }
 
-async function countdown() {
+async function countdownAndReset() {
   while (duration > 0) {
     updateCountdownDisplay();
     audienceBid();
@@ -151,8 +150,8 @@ async function countdown() {
     playerWallet -= currentBid;
     pushItemToInventory();
   }
-
   updateWalletDisplay();
+
   //reset rest of everything for another round
   duration = 10;
   DOMSelectors.bidLog.innerHTML = ``;
