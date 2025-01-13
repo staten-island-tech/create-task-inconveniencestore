@@ -10,7 +10,7 @@ const normalAuctionItems = [
   },
   {
     name: "one dollar",
-    description: "thats right, one freedom currency",
+    description: "that's right, one freedom currency",
 
     multiplier: 0.5,
     value: 1,

@@ -54,7 +54,8 @@ function endSequence() {
   <u><h1>-end of auction-</h1></u>
   <div class="flex flex-row flex-wrap justify-around items-center">
     <div class="bg-[#e7e0e6] ">
-      <b><h2>final balance: ${playerWallet}</h2></b>
+      <b><h2>final balance: </h2></b>
+      <h2>${playerWallet}</h2>
     </div>
   </div>
 </div>`;
@@ -155,6 +156,7 @@ async function countdown() {
   //reset rest of everything for another round
   duration = 10;
   DOMSelectors.bidLog.innerHTML = ``;
+  DOMSelectors.bidInput.value = ``;
   currentBid = 0;
   updateBidDisplay(currentBid);
   normalAuctionItems.splice(index, 1);
@@ -182,7 +184,7 @@ function pushItemToInventory() {
           100 -
           (item.soldPrice / item.value) * 100
         ).toFixed(2)}% of the original price</p>
-        ${item.soldPrice > item.value ? "<p> (that's not good)</p>" : ""}
+        ${item.soldPrice > item.value ? "<p>(that's not good)</p>" : ""}
       </div>
       `
     );
